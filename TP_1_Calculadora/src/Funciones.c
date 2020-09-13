@@ -10,12 +10,9 @@ float restar(float num1,float num2){
     return num1 - num2;
 }
 
-
 float multiplicar(float num1,float num2){
     return num1 * num2;
 }
-
-
 
 float dividir(float num1, float num2){
     float retorno = -1;
@@ -29,12 +26,11 @@ float dividir(float num1, float num2){
 }
 
 int validarEntero(float num){
-
-	int resultado = 0;
+	int retorno = 0;
 	if ((num - (int) num) == 0) {
-		resultado = 1;
+		retorno = 1;
 	}
-	return resultado;
+	return retorno;
 }
 
 long int factorial(float num){

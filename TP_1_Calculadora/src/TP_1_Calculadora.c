@@ -15,7 +15,9 @@ int main()
 {
 	setbuf(stdout,NULL);
 
+	char respuesta;
     int opcionMenu;
+    int seguimiento = 0;
     float numero1;
     float numero2;
     float suma;
@@ -27,33 +29,52 @@ int main()
 
 
     do{
+    switch(menu()){
+    case 1:	while(seguimiento != 0){
+    				printf("\nYa se ingreso el primer numero!");
+    		}
+    		numero1 = utn_getfloat("\nIngrese el primer numero: ");
+    		seguimiento = 1;
+    		break;
 
-    printf("\n1 Ingresar 1er operando (A=x) ");
-    printf("\n2 Ingresar 2do operando (B=y) ");
-    printf("\n3 Calcular todas las operaciones ");
-    printf("\n4 Informar resultados ");
-    printf("\n5 Salir");
-    printf("\nElija opcion (1 a 5): ");
-    scanf("%d", &opcionMenu);
-
-    switch(opcionMenu){
-    case 1: printf("\nIngrese el primer numero: ");
-            scanf("%f", &numero1);
+    case 2:	while(seguimiento != 1){
+				if(seguimiento < 1){
+					printf("\nFalta ingresar un primer numero!")
+					}
+				else if(seguimiento > 1){
+					printf("\nYa se ingreso el segundo numero!");
+					}
+			}
+    		numero2 = utn_getfloat("\nIngrese el segundo numero: ");
+    		seguimiento = 2;
             break;
 
-    case 2: printf("\nIngrese el segundo numero: ");
-            scanf("%f", &numero2);
+    case 3: while(seguimiento != 2){
+    			if(seguimiento < 2){
+    				printf("\nFaltan ingresar numeros.")
+    			}
+    			else if(seguimiento > 2){
+    				printf("\nYa se calcularon las operaciones!");
+    			}
+			}
+    		suma = sumar(numero1, numero2);
+            resta = restar(numero1, numero2);
+            division = dividir(numero1, numero2);
+            multiplicacion = multiplicar(numero1, numero2);
+            factorialA = factorial(numero1);
+            factorialB = factorial(numero2);
+            seguimiento = 3;
             break;
 
-    case 3: suma = HacerSuma(numero1, numero2);
-            resta = HacerResta(numero1, numero2);
-            division = HacerDivision(numero1, numero2);
-            multiplicacion = HacerMultiplicacion(numero1, numero2);
-            factorialA = HacerFactorial(numero1);
-            factorialB = HacerFactorial(numero2);
-            break;
-
-    case 4: printf("\nEl resultado de A+B es: %.2f", suma);
+    case 3: while(seguimiento != 3){
+        		if(seguimiento <= 1){
+        			printf("\nFaltan ingresar numeros.")
+        			}
+        		else if(seguimiento == 2){
+        			printf("\nFalta calcular las operaciones!");
+        			}
+    		}
+    		printf("\nEl resultado de A+B es: %.2f", suma);
             printf("\nEl resultado de A-B es: %.2f", resta);
             if(numero2 != 0){
             printf("\nEl resultado de A/B es: %.2f", division);
@@ -63,15 +84,15 @@ int main()
             }
             printf("\nEl resultado de A*B es: %.2f", multiplicacion);
             printf("\nEl factorial de A es: %ld y El factorial de B es: %ld", factorialA, factorialB);
+            seguimiento = 0;
             break;
 
-    case 5: break;
+    case 5: respuesta = utn_getchar("\nEsta seguro que desea salir?(s/n): ");
+    		break;
 
-    default: printf("No es una opcion valida\n");
-             break;
     }
 
-}while(opcionMenu != 5);
+}while(respuesta != 's');
 
     return 0;
 }
