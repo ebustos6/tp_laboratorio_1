@@ -29,14 +29,14 @@ int main()
 
     do{
     switch(menu()){
-    case 1:	while(seguimiento != 0){
+    case 1:	if(seguimiento != 0){
     				printf("\nYa se ingreso el primer numero!");
     		}
     		numero1 = utn_getFloat("\nIngrese el primer numero: ");
     		seguimiento = 1;
     		break;
 
-    case 2:	while(seguimiento != 1){
+    case 2:	if(seguimiento != 1){
 				if(seguimiento < 1){
 					printf("\nFalta ingresar un primer numero!");
 					}
@@ -48,7 +48,7 @@ int main()
     		seguimiento = 2;
             break;
 
-    case 3: while(seguimiento != 2){
+    case 3: if(seguimiento != 2){
     			if(seguimiento < 2){
     				printf("\nFaltan ingresar numeros.");
     			}
@@ -65,7 +65,7 @@ int main()
             seguimiento = 3;
             break;
 
-    case 4: while(seguimiento != 3){
+    case 4: if(seguimiento != 3){
         		if(seguimiento <= 1){
         			printf("\nFaltan ingresar numeros.");
         			}
