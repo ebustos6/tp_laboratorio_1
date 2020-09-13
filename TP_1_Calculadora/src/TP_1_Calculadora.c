@@ -16,7 +16,6 @@ int main()
 	setbuf(stdout,NULL);
 
 	char respuesta;
-    int opcionMenu;
     int seguimiento = 0;
     float numero1;
     float numero2;
@@ -33,25 +32,25 @@ int main()
     case 1:	while(seguimiento != 0){
     				printf("\nYa se ingreso el primer numero!");
     		}
-    		numero1 = utn_getfloat("\nIngrese el primer numero: ");
+    		numero1 = utn_getFloat("\nIngrese el primer numero: ");
     		seguimiento = 1;
     		break;
 
     case 2:	while(seguimiento != 1){
 				if(seguimiento < 1){
-					printf("\nFalta ingresar un primer numero!")
+					printf("\nFalta ingresar un primer numero!");
 					}
 				else if(seguimiento > 1){
 					printf("\nYa se ingreso el segundo numero!");
 					}
 			}
-    		numero2 = utn_getfloat("\nIngrese el segundo numero: ");
+    		numero2 = utn_getFloat("\nIngrese el segundo numero: ");
     		seguimiento = 2;
             break;
 
     case 3: while(seguimiento != 2){
     			if(seguimiento < 2){
-    				printf("\nFaltan ingresar numeros.")
+    				printf("\nFaltan ingresar numeros.");
     			}
     			else if(seguimiento > 2){
     				printf("\nYa se calcularon las operaciones!");
@@ -66,9 +65,9 @@ int main()
             seguimiento = 3;
             break;
 
-    case 3: while(seguimiento != 3){
+    case 4: while(seguimiento != 3){
         		if(seguimiento <= 1){
-        			printf("\nFaltan ingresar numeros.")
+        			printf("\nFaltan ingresar numeros.");
         			}
         		else if(seguimiento == 2){
         			printf("\nFalta calcular las operaciones!");
@@ -87,7 +86,7 @@ int main()
             seguimiento = 0;
             break;
 
-    case 5: respuesta = utn_getchar("\nEsta seguro que desea salir?(s/n): ");
+    case 5: respuesta = utn_getChar("\nEsta seguro que desea salir?(s/n): ");
     		break;
 
     }

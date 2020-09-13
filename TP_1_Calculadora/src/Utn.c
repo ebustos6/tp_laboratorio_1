@@ -36,7 +36,7 @@ int validarIntMenu(){
 
 int menu(){
 	int aux;
-	printf("************MENU PRINCIPAL************")
+	printf("************MENU PRINCIPAL************");
 	printf("\n1 Ingresar 1er operando (A=x) ");
 	printf("\n2 Ingresar 2do operando (B=y) ");
     printf("\n3 Calcular todas las operaciones ");

@@ -1,11 +1,11 @@
 #ifndef UTN_H_
 #define UTN_H_
 
-int getInt(char);
+int utn_getInt(char[]);
 
-float getFloat(char);
+float utn_getFloat(char[]);
 
-char getChar(char);
+char utn_getChar(char[]);
 
 int validarIntMenu();
 
