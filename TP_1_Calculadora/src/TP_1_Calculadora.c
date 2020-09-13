@@ -32,7 +32,7 @@ int main()
     case 1:	if(seguimiento != 0){
     				printf("\nYa se ingreso el primer numero!");
     		}
-    		numero1 = utn_getFloat("\nIngrese el primer numero: ");
+    		numero1 = utn_getFloat("Ingrese el primer numero: ");
     		seguimiento = 1;
     		break;
 
@@ -44,7 +44,7 @@ int main()
 					printf("\nYa se ingreso el segundo numero!");
 					}
 			}
-    		numero2 = utn_getFloat("\nIngrese el segundo numero: ");
+    		numero2 = utn_getFloat("Ingrese el segundo numero: ");
     		seguimiento = 2;
             break;
 
@@ -82,7 +82,7 @@ int main()
                 printf("\nNo se puede dividir por 0");
             }
             printf("\nEl resultado de A*B es: %.2f", multiplicacion);
-            printf("\nEl factorial de A es: %ld y El factorial de B es: %ld", factorialA, factorialB);
+            printf("\nEl factorial de A es: %ld y El factorial de B es: %ld\n", factorialA, factorialB);
             seguimiento = 0;
             break;
 
