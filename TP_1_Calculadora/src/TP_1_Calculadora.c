@@ -30,7 +30,7 @@ int main()
     do{
     switch(menu()){
     case 1:	if(seguimiento != 0){
-    				printf("\nYa se ingreso el primer numero!");
+    				printf("\nYa se ingreso el primer numero!\n");
     		}
     		else if(seguimiento == 0){
     				numero1 = utn_getFloat("Ingrese el primer numero: ");
@@ -40,10 +40,10 @@ int main()
 
     case 2:	if(seguimiento != 1){
 				if(seguimiento < 1){
-					printf("\nFalta ingresar un primer numero!");
+					printf("\nFalta ingresar un primer numero!\n");
 					}
 				else if(seguimiento > 1){
-					printf("\nYa se ingreso el segundo numero!");
+					printf("\nYa se ingreso el segundo numero!\n");
 					}
 			}
     		else if(seguimiento == 1){
@@ -54,10 +54,10 @@ int main()
 
     case 3: if(seguimiento != 2){
     			if(seguimiento < 2){
-    				printf("\nFaltan ingresar numeros.");
+    				printf("\nFaltan ingresar numeros!\n");
     			}
     			else if(seguimiento > 2){
-    				printf("\nYa se calcularon las operaciones!");
+    				printf("\nYa se calcularon las operaciones!\n");
     			}
 			}
     		else if(seguimiento == 2){
@@ -73,10 +73,10 @@ int main()
 
     case 4: if(seguimiento != 3){
         		if(seguimiento <= 1){
-        			printf("\nFaltan ingresar numeros.");
+        			printf("\nFaltan ingresar numeros!\n");
         			}
         		else if(seguimiento == 2){
-        			printf("\nFalta calcular las operaciones!");
+        			printf("\nFalta calcular las operaciones!\n");
         			}
     		}
     		else if(seguimiento == 3){
