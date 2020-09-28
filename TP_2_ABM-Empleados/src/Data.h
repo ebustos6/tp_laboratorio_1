@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 int getInt(char[]);
 void getString(char[], char[]);
 float getFloat(char[]);
