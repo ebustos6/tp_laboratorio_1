@@ -1,9 +1,3 @@
-/*
- * ArrayEmployees.c
- *
- *  Created on: Sep 28, 2020
- *      Author: Administrator
- */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,7 +35,6 @@ int createEmployeeId(Employee list[], int len) {
 		if (list[i].isEmpty == FALSE) {
 			aux++;
 		}
-
 	}
 	return aux;
 }
@@ -182,18 +175,17 @@ void printAnEmployee(Employee aux) {
  *
  * \param list[] Employee array empleados
  * \param len int largo del array
- * \return void
+ * \return -1 si no hay espacio 1 si se cargo
  */
-void addEmployeeList(Employee list[], int len) {
-	int found;
+int addEmployeeList(Employee list[], int len) {
+	int found, ret = -1;
+
 	found = findFree(list, len);
 	if (found != -1) {
 		list[found] = addEmployee(list, len);
-		printf("\n|***EL EMPLEADO HA SIDO CARGADO EXITOSAMENTE***|\n");
-	} else {
-		printf("\n|**NO HAY ESPACIO PARA CREAR UN NUEVO EMPLEADO*|\n");
+		ret = 1;
 	}
-
+	return ret;
 }
 
 /** \brief busca lugar para crear un empleado
@@ -203,8 +195,8 @@ void addEmployeeList(Employee list[], int len) {
  * \return int devuelve la posicion donde crearlo
  */
 int findFree(Employee list[], int len) {
-	int i;
-	int index = -1;
+	int i, index = -1;
+
 	for (i = 0; i < len; i++) {
 		if (list[i].isEmpty == TRUE) {
 			index = i;
@@ -221,8 +213,7 @@ int findFree(Employee list[], int len) {
  * \return void
  */
 void editEmployeeName(Employee list[], int len) {
-	int id;
-	int i;
+	int id, i;
 
 	id = findEmployeeById(list, len);
 	for (i = 0; i < len; i++) {
@@ -244,8 +235,7 @@ void editEmployeeName(Employee list[], int len) {
  * \return void
  */
 void editEmployeeLastName(Employee list[], int len) {
-	int id;
-	int i;
+	int id, i;
 
 	id = findEmployeeById(list, len);
 
@@ -266,8 +256,7 @@ void editEmployeeLastName(Employee list[], int len) {
  * \return void
  */
 void editEmployeeSalary(Employee list[], int len) {
-	int id;
-	int i;
+	int id, i;
 
 	id = findEmployeeById(list, len);
 
@@ -288,8 +277,7 @@ void editEmployeeSalary(Employee list[], int len) {
  * \return void
  */
 void editEmployeeSector(Employee list[], int len) {
-	int id;
-	int i;
+	int id, i;
 
 	id = findEmployeeById(list, len);
 
@@ -309,8 +297,7 @@ void editEmployeeSector(Employee list[], int len) {
  * \return float devuelve el monto total
  */
 float salaryAdd(Employee list[], int len) {
-	float aux;
-	int i;
+	float aux, i;
 
 	for (i = 0; i < len; i++) {
 		if (list[i].isEmpty == FALSE) {
@@ -327,9 +314,8 @@ float salaryAdd(Employee list[], int len) {
  * \return float devuelve el promedio
  */
 float salaryAverage(Employee list[], int len) {
-	int count = 0;
+	int i, count = 0;
 	float average;
-	int i;
 
 	for (i = 0; i < len; i++) {
 		if (list[i].isEmpty == FALSE) {
@@ -347,9 +333,8 @@ float salaryAverage(Employee list[], int len) {
  * \return void
  */
 void salaryMoreThanAverage(Employee list[], int len) {
-	int count = 0;
+	int i, count = 0;
 	float aux = salaryAverage(list, len);
-	int i;
 
 	for (i = 0; i < len; i++) {
 		if (list[i].isEmpty == FALSE && list[i].salary > aux) {

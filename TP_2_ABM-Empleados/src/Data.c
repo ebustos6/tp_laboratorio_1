@@ -1,10 +1,3 @@
-/*
- * Data.c
- *
- *  Created on: Sep 28, 2020
- *      Author: Administrator
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "Data.h"
@@ -147,3 +140,6 @@ void printMessages3(int aux) {
 	}
 }
 
+void errorMsg(void){
+	printf("\n|******DEBE CARGAR UN EMPLEADO PREVIAMENTE*****|\n");
+}

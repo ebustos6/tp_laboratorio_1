@@ -1,10 +1,3 @@
-/*
- * Data.h
- *
- *  Created on: Sep 28, 2020
- *      Author: Administrator
- */
-
 #ifndef DATA_H_
 #define DATA_H_
 
@@ -20,5 +13,6 @@ int menu3(int);
 void printMessages1(int);
 void printMessages2(int);
 void printMessages3(int);
+void errorMsg();
 
 #endif /* DATA_H_ */

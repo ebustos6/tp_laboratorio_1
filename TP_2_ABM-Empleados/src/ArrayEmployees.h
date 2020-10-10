@@ -1,10 +1,3 @@
-/*
- * ArrayEmployees.h
- *
- *  Created on: Sep 28, 2020
- *      Author: Administrator
- */
-
 #ifndef ARRAYEMPLOYEES_H_
 #define ARRAYEMPLOYEES_H_
 
@@ -26,7 +19,7 @@ void printAnEmployee(Employee);
 int printEmployees(Employee[], int);
 void sortEmployees(Employee[], int);
 int createEmployeeId(Employee[], int);
-void addEmployeeList(Employee[], int);
+int addEmployeeList(Employee[], int);
 int findFree(Employee[], int);
 int removeEmployee(Employee[], int);
 int findEmployeeById(Employee[], int);
