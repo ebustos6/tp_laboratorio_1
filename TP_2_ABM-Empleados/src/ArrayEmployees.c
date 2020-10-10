@@ -297,10 +297,11 @@ void editEmployeeSector(Employee list[], int len) {
  * \return float devuelve el monto total
  */
 float salaryAdd(Employee list[], int len) {
-	float aux, i;
+	float aux;
+	int i;
 
 	for (i = 0; i < len; i++) {
-		if (list[i].isEmpty == FALSE) {
+		if (list[i].isEmpty == FALSE){
 			aux += list[i].salary;
 		}
 	}
