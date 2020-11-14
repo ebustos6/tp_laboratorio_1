@@ -33,6 +33,11 @@ LinkedList* ll_newLinkedList(void)
 int ll_len(LinkedList* this)
 {
     int returnAux = -1;
+
+    if(this != NULL){
+    	returnAux = this -> size;
+    }
+
     return returnAux;
 }
 
@@ -47,7 +52,16 @@ int ll_len(LinkedList* this)
  */
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
-    return NULL;
+	Node* pNode = NULL;
+	int i;
+
+	if(this != NULL && nodeIndex >= 0 && nodeIndex < ll_len(this)){
+		pNode = this-> pFirstNode;
+		for(i = 0; i < nodeIndex; i++){
+			pNode = pNode -> pNextNode;
+		}
+	}
+    return pNode;
 }
 
 /** \brief  Permite realizar el test de la funcion getNode la cual es privada
@@ -76,6 +90,26 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     int returnAux = -1;
+    Node* nuevoNodo = NULL;
+
+    if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this)){
+    	nuevoNodo = (Node*)malloc(sizeof(Node));
+    	if(nuevoNodo != NULL){
+
+    		nuevoNodo -> pElement = pElement;
+    		if(nodeIndex == 0){
+
+    			nuevoNodo -> pNextNode = this-> pFirstNode;
+    			this-> pFirstNode = nuevoNodo;
+    		}
+    		else{
+    			nuevoNodo-> pNextNode = getNode(this, nodeIndex);
+    			(getNode(this, nodeIndex-1))->pNextNode = nuevoNodo;
+    		}
+    		this-> size++;
+    		returnAux = 0;
+    	}
+    }
     return returnAux;
 }
 
@@ -105,6 +139,11 @@ int ll_add(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
 
+    if(this != NULL){
+    	addNode(this,ll_len(this),pElement);
+    	returnAux = 0;
+    }
+
     return returnAux;
 }
 
@@ -120,6 +159,9 @@ void* ll_get(LinkedList* this, int index)
 {
     void* returnAux = NULL;
 
+    if(this != NULL && index >= 0 && index < ll_len(this)){
+    	returnAux = (getNode(this,index))->pElement;
+    }
     return returnAux;
 }
 
