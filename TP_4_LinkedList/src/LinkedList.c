@@ -301,51 +301,152 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
     return returnAux;
 }
 
-/** \brief Crea y retorna una nueva lista con los elementos indicados
- *
- * \param pList LinkedList* Puntero a la lista
- * \param from int Indice desde el cual se copian los elementos en la nueva lista
- * \param to int Indice hasta el cual se copian los elementos en la nueva lista (no incluido)
- * \return LinkedList* Retorna  (NULL) Error: si el puntero a la listas es NULL
-                                o (si el indice from es menor a 0 o mayor al len de la lista)
-                                o (si el indice to es menor o igual a from o mayor al len de la lista)
-                         (puntero a la nueva lista) Si ok
-*/
+
 LinkedList* ll_subList(LinkedList* this,int from,int to)
 {
     LinkedList* cloneArray = NULL;
+    Node* auxNode = NULL;
+    int i;
 
+    if(this != NULL && (from >= 0 && from < ll_len(this)) && (to > from && to <= ll_len(this))){
+    	cloneArray = ll_newLinkedList();
+    	if(cloneArray != NULL){
+    		for(i = from ; i <= to; i++){
+    			auxNode = getNode(this, i);
+    			if(auxNode != NULL){
+    				addNode(cloneArray,i,auxNode->pElement);
+    			}
+    		}
+    	}
+    }
     return cloneArray;
 }
 
 
-
-/** \brief Crea y retorna una nueva lista con los elementos de la lista pasada como parametro
- *
- * \param pList LinkedList* Puntero a la lista
- * \return LinkedList* Retorna  (NULL) Error: si el puntero a la listas es NULL
-                                (puntero a la nueva lista) Si ok
-*/
 LinkedList* ll_clone(LinkedList* this)
 {
     LinkedList* cloneArray = NULL;
 
+    if(this != NULL){
+    	cloneArray = ll_subList(this,0,ll_len(this));
+    }
+
     return cloneArray;
 }
 
 
-/** \brief Ordena los elementos de la lista utilizando la funcion criterio recibida como parametro
- * \param pList LinkedList* Puntero a la lista
- * \param pFunc (*pFunc) Puntero a la funcion criterio
- * \param order int  [1] Indica orden ascendente - [0] Indica orden descendente
- * \return int Retorna  (-1) Error: si el puntero a la listas es NULL
-                                ( 0) Si ok
- */
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
-    int returnAux =-1;
-
-    return returnAux;
+	int returnAux = -1;
+	void *pElement1 = NULL;
+	void *pElement2 = NULL;
+	void *pAux = NULL;
+	int lenLL = ll_len(this);
+	int flagSwap = 1;
+	int i;
+	int r;
+	if(this != NULL && pFunc != NULL && (order == 1 || order == 0) && lenLL > 0) {
+			switch(order){
+			    	case 1://ascendente
+			    		do{
+			    			flagSwap = 0;
+			    			for(i=0;i<lenLL-1;i++){
+			    				pElement1 = ll_get(this,i);
+			    				pElement2 = ll_get(this,i+1);
+								r = pFunc(pElement1,pElement2);
+								if(r == 1){
+									pAux = pElement1;
+									ll_set(this,i,pElement2);
+									ll_set(this,i+1,pAux);
+									flagSwap = 1;
+								}
+							}
+							lenLL--;
+			    		}while(flagSwap);
+						returnAux = 0;
+			    		break;
+			    	case 0://descendente
+			    		do{
+			    			flagSwap = 0;
+							for(i=0;i<lenLL-1;i++){
+								pElement1 = ll_get(this,i);
+								pElement2 = ll_get(this,i+1);
+								r = pFunc(pElement1,pElement2);
+								if(r == -1){
+									pAux = pElement1;
+									ll_set(this,i,pElement2);
+									ll_set(this,i+1,pAux);
+									flagSwap = 1;
+								}
+							}
+							lenLL--;
+			    		}while(flagSwap);
+						returnAux = 0;
+			    		break;
+			    	}
+		}
+		return returnAux;
 
 }
 
+LinkedList* ll_map(LinkedList* this, void (*fn)(void*)){
+
+	int i;
+	void* auxElement;
+
+	if(this != NULL && fn!= NULL){
+		for(i = 0; i < ll_len(this); i++){
+			auxElement = ll_get(this, i);
+			if(auxElement != NULL){
+				fn(auxElement);
+				ll_set(this,i,auxElement);
+			}
+		}
+	}
+
+	return this;
+
+}
+
+/*LinkedList* ll_filter(LinkedList* this, int (*fn)(void*)){
+
+	int i;
+	void* auxElement;
+	void* newList;
+
+	newList = ll_newLinkedList();
+
+	if(this != NULL && fn != NULL && newList != NULL){
+		for(i = 0; i < ll_len(this); i++){
+			auxElement = ll_get(this, i);
+			if(auxElement != NULL && (fn(auxElement)==1)){
+				ll_set(this,i,auxElement);
+
+			}
+		}
+	}
+
+
+
+	return this;
+}*/
+
+
+LinkedList* ll_filter(LinkedList *this, int (*fn)(void)) {
+	LinkedList *auxLinkedList = NULL;
+	void *pElement;
+
+	if (this != NULL && fn != NULL) {
+		auxLinkedList = ll_newLinkedList();
+		if (auxLinkedList != NULL) {
+			for (int i = 0; i < ll_len(this); i++) {
+				pElement = ll_get(this, i);
+				if (fn(pElement)) {
+					ll_add(auxLinkedList, pElement);
+				}
+			}
+		}
+	}
+	return auxLinkedList;
+
+}
