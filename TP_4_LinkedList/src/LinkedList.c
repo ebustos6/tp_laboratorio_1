@@ -408,31 +408,7 @@ LinkedList* ll_map(LinkedList* this, void (*fn)(void*)){
 
 }
 
-/*LinkedList* ll_filter(LinkedList* this, int (*fn)(void*)){
-
-	int i;
-	void* auxElement;
-	void* newList;
-
-	newList = ll_newLinkedList();
-
-	if(this != NULL && fn != NULL && newList != NULL){
-		for(i = 0; i < ll_len(this); i++){
-			auxElement = ll_get(this, i);
-			if(auxElement != NULL && (fn(auxElement)==1)){
-				ll_set(this,i,auxElement);
-
-			}
-		}
-	}
-
-
-
-	return this;
-}*/
-
-
-LinkedList* ll_filter(LinkedList *this, int (*fn)(void)) {
+LinkedList* ll_filter(LinkedList *this, int (*fn)(void*)) {
 	LinkedList *auxLinkedList = NULL;
 	void *pElement;
 

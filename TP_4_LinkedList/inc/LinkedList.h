@@ -237,4 +237,4 @@ LinkedList* ll_map(LinkedList* this, void (*fn)(void*));
  *
  *
  */
-LinkedList* ll_filter(LinkedList *this, int (*fn)(void));
+LinkedList* ll_filter(LinkedList *this, int (*fn)(void*));
